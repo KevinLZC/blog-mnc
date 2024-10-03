@@ -1,0 +1,34 @@
+{
+  "main": [
+    {
+      "name": "Inicio",
+      "url": "/"
+    },
+    {
+      "name": "Sobre nosotros",
+      "url": "/about"
+    },
+    {
+      "name": "Contacto",
+      "url": "/contact"
+    },
+    {
+      "name": "Autores",
+      "url": "/authors"
+    },
+    {
+      "name": "Categorías",
+      "url": "/categories"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Sobre nosotros",
+      "url": "/about"
+    },
+    {
+      "name": "Contacto",
+      "url": "/contact"
+    }
+  ]
+}

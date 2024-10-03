@@ -1,0 +1,22 @@
+---
+import config from "@/config/config.json";
+import {
+  IoLogoFacebook,
+} from "react-icons/io5";
+
+const { base_url } = config.site;
+const { title, description, slug, className } = Astro.props;
+---
+
+<ul class={`${className}`}>
+  <li class="inline-block">
+    <a
+      aria-label="botón para compartir en facebook"
+      href={`https://facebook.com/sharer/sharer.php?u=${base_url}/${slug}`}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      <IoLogoFacebook />
+    </a>
+  </li>
+</ul>

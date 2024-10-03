@@ -1,0 +1,35 @@
+{
+  "site": {
+    "title": "Maestría en Nutrición Clínica",
+    "base_url": "",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.png",
+    "logo_width": "280",
+    "logo_height": "34",
+    "logo_text": "Maestría en Nutrición Clínica"
+  },
+
+  "settings": {
+    "pagination": 5,
+    "summary_length": 100
+  },
+
+  "metadata": {
+    "meta_author": "Facultad de Medicina",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "Blog de la Maestría en Nutrición Clínica de la Facultad de Medicina de la Universidad de Colima"
+  },
+
+  "params": {
+    "contact_form_action": "#",
+    "copyright": "Copyright © 2024 Facultad de Medicina"
+  },
+
+  "contactinfo": {
+    "address": "Avenida Universidad 333, Las Víboras, 28040 Colima, Col.",
+    "email": "medicina@ucol.mx",
+    "phone": "+52 312 316 1099"
+  }
+}
