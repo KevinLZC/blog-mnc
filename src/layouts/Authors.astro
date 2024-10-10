@@ -29,7 +29,10 @@ const { authors } = Astro.props;
             {author.data.title}
           </a>
         </h3>
-        <p class="mb-3" set:text={markdownify(author.body.slice(0, 100))} />
+        <p
+          class="mb-3"
+          set:text={markdownify(author.body.slice(0, 100)) + (author.body.length > 100 ? "..." : "")}
+        />
         <a
           href={`/authors/${author.slug}`}
           class="inline-flex items-center text-primary transition duration-200 hover:opacity-70"

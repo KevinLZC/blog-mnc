@@ -1,11 +1,11 @@
 ---
-title: "La Importancia de la Nutrición Clínica en el Cuidado de la Salud" 
-description: "Conoce cómo la nutrición clínica puede mejorar la calidad de vida de los pacientes." 
-date: 2024-10-02T05:00:00Z 
-image: "/images/posts/01.png"
-categories: ["nutrición"] 
-authors: ["Dr. Jaime Alberto Bricio Barrios"] 
-tags: ["nutrición clínica", "salud", "bienestar"] 
+title: "La Importancia de la Nutrición Clínica en el Cuidado de la Salud"
+description: "Conoce cómo la nutrición clínica puede mejorar la calidad de vida de los pacientes."
+date: 2024-10-05T06:30:00.000Z
+image: "http://localhost:1337/uploads/01_9839fa82b2.png"
+authors: ["Dr. Jaime Alberto Bricio Barrios"]
+categories: ["nutrición"]
+tags: ["nutrición clínica","salud","bienestar"]
 draft: false
 ---
 
