@@ -2,19 +2,13 @@ import { readFileSync, writeFileSync, existsSync, stat } from "fs";
 import { join } from "path";
 import { fetchData } from "./fetchData";
 import { slugify } from "./textConverter";
-import { file } from "astro/loaders";
 
-// Usar el directorio actual de ejecución
 const baseDir = process.cwd();
 
-function syncWriteFile(filename: string, data: any) {
-  writeFileSync(join(baseDir, filename), data, {
-    flag: "w",
-  });
-
-  const contents = readFileSync(join(baseDir, filename), "utf-8");
-  console.log(contents);
-
+function syncWriteFile(filename: string, data: any): string {
+  const filePath = join(baseDir, filename);
+  writeFileSync(filePath, data, { flag: "w" });
+  const contents = readFileSync(filePath, "utf-8");
   return contents;
 }
 
@@ -25,7 +19,7 @@ export async function createNewFiles() {
   const authors = await fetchData(token, "authors");
   const posts = await fetchData(token, "posts");
 
-  authors.map((author: any) => {
+  authors.forEach((author: any) => {
     const {
       title,
       description,
@@ -35,31 +29,37 @@ export async function createNewFiles() {
       twitter,
       info,
       image,
-      updatedAt,
     } = author;
-
-    const fileTemplate = `---\ntitle: ${title}\nimage: http://localhost:1337${image.url}\ndescription: ${description}\nsocial:\n  facebook: ${facebook ?? '""'}\n  instagram: ${instagram ?? '""'}\n  linkedin: ${linkedin ?? '""'}\n  twitter: ${twitter ?? '""'}\n---\n\n${info}\n`;
-
     const slug = slugify(title);
     const filePath = join(baseDir, `src/content/authors/${slug}.md`);
 
+    const fileTemplate = `
+---
+title: "${title}"
+image: "http://localhost:1337${image.url}"
+description: "${description}"
+social:
+  facebook: "${facebook ?? ""}"
+  instagram: "${instagram ?? ""}"
+  linkedin: "${linkedin ?? ""}"
+  twitter: "${twitter ?? ""}"
+---
+
+${info}
+`.trim();
+
     if (!existsSync(filePath)) {
-      syncWriteFile(`src/content/authors/${slug}.md`, fileTemplate);
+      syncWriteFile(`src/content/authors/${slug}.md`, fileTemplate.trim());
     } else {
-      stat(filePath, (err, stats) => {
-        if (err) {
-          console.error(`Error retrieving file stats: ${err.message}`);
-          return;
-        }
-        const createdOn = new Date(stats.mtime.toISOString());
-        if (createdOn < new Date(updatedAt)) {
-          syncWriteFile(`src/content/authors/${slug}.md`, fileTemplate);
-        }
-      });
+      const existingContent = readFileSync(filePath, "utf-8").trim();
+
+      if (existingContent !== fileTemplate.trim()) {
+        syncWriteFile(`src/content/authors/${slug}.md`, fileTemplate.trim());
+      }
     }
   });
 
-  posts.map((post: any) => {
+  posts.forEach((post: any) => {
     const {
       id,
       title,
@@ -70,35 +70,32 @@ export async function createNewFiles() {
       categories,
       tags,
       content,
-      updatedAt,
     } = post;
-
     const filePath = join(baseDir, `src/content/posts/post-${id}.md`);
-    const fileTemplate = `---\ntitle: "${title}"\ndescription: "${description}"\ndate: ${date}\nimage: "http://localhost:1337${image.url}"\nauthors: ["${author.title}"]\ncategories: ${JSON.stringify(categories.map((category: any) => category.name))}\ntags: ${JSON.stringify(tags.map((tag: any) => tag.name))}\ndraft: ${false}\n---\n\n${content}\n`;
+
+    const fileTemplate = `
+---
+title: "${title}"
+description: "${description}"
+date: ${date}
+image: "http://localhost:1337${image.url}"
+authors: ["${author.title}"]
+categories: ${JSON.stringify(categories.map((category: any) => category.name))}
+tags: ${JSON.stringify(tags.map((tag: any) => tag.name))}
+draft: false
+---
+
+${content}
+`.trim();
 
     if (!existsSync(filePath)) {
-      syncWriteFile(`src/content/posts/post-${id}.md`, fileTemplate);
+      syncWriteFile(`src/content/posts/post-${id}.md`, fileTemplate.trim());
     } else {
-      stat(filePath, (err, stats) => {
-        if (err) {
-          console.error(`Error retrieving file stats: ${err.message}`);
-          return;
-        }
-        const createdOn = new Date(stats.mtime.toISOString());
-        if (createdOn < new Date(updatedAt)) {
-          syncWriteFile(`src/content/posts/post-${id}.md`, fileTemplate);
-        }
-      });
+      const existingContent = readFileSync(filePath, "utf-8").trim();
+
+      if (existingContent !== fileTemplate.trim()) {
+        syncWriteFile(`src/content/posts/post-${id}.md`, fileTemplate.trim());
+      }
     }
   });
 }
-// ---
-// title: "La Importancia de la Nutrición Clínica en el Cuidado de la Salud"
-// description: "Conoce cómo la nutrición clínica puede mejorar la calidad de vida de los pacientes."
-// date: 2024 - 10-02T05:00:00Z
-// image: "/images/posts/01.png"
-// categories: ["nutrición"]
-// authors: ["Dr. Jaime Alberto Bricio Barrios"]
-// tags: ["nutrición clínica", "salud", "bienestar"]
-// draft: false
-// ---

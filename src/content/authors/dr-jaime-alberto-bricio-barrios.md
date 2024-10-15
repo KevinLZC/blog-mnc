@@ -1,10 +1,10 @@
 ---
-title: Dr. Jaime Alberto Bricio Barrios
-image: http://localhost:1337/uploads/beto_bricio_5d926f7b82.png
-description: this is meta description
+title: "Dr. Jaime Alberto Bricio Barrios"
+image: "http://localhost:1337/uploads/beto_bricio_5d926f7b82.png"
+description: "this is meta description"
 social:
-  facebook: https://www.facebook.com/soy.beto
-  instagram: https://www.instagram.com/beto_bricio/
+  facebook: "https://www.facebook.com/soy.beto"
+  instagram: "https://www.instagram.com/beto_bricio/"
   linkedin: ""
   twitter: ""
 ---
