@@ -1,11 +1,11 @@
 ---
 title: "Nutrición Clínica: Un Pilar Fundamental en la Recuperación del Paciente"
 description: "Descubre cómo la nutrición clínica influye en el proceso de recuperación de los pacientes hospitalizados y crónicos."
-date: 2024-10-09T06:15:00.000Z
-image: "http://localhost:1337/uploads/02_2686e0f7fd.png"
-authors: ["Dr. Jaime Alberto Bricio Barrios"]
-categories: ["nutrición"]
-tags: ["bienestar","salud","nutrición clínica"]
+date: 2024-10-10T14:00:00.000Z
+image: "http://localhost:1337/uploads/02_8fe419694f.png"
+authors: ["Cecilia Lopez"]
+categories: ["Nutrición"]
+tags: ["Nutrición clínica","Salud"]
 draft: false
 ---
 

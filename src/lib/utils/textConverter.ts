@@ -2,9 +2,11 @@ import { slug } from "github-slugger";
 import { marked } from "marked";
 
 // slugify
-export const slugify = (content: string) => {
-  return slug(content);
-};
+// export const slugify = (content: string) => {
+//   return slug(content);
+// };
+
+export const slugify = slug;
 
 // markdownify
 export const markdownify = (content: string, div?: boolean) => {

@@ -1,6 +1,6 @@
 ---
 title: Dr. Jaime Alberto Bricio Barrios
-image: http://localhost:1337/uploads/beto_bricio_c9bf447812.png
+image: http://localhost:1337/uploads/beto_bricio_5d926f7b82.png
 description: this is meta description
 social:
   facebook: https://www.facebook.com/soy.beto
